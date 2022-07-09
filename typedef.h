@@ -101,18 +101,6 @@ StrTrim (std::string & buffer)
 	  _StrTrim (buffer, trimChars);
 }
 
-static unsigned long long
-GetCycleCount ()
-{
-	  unsigned long long temp;
-	  unsigned int low, high;
-	  __asm__ __volatile__ ("rdtsc":"=a" (low), "=d" (high));
-	  temp = high;
-	  temp <<= 32;
-	  temp += low;
-	  return temp;
-};
-
 inline char *
 strlwr (char *str)
 {
