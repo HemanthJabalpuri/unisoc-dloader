@@ -395,18 +395,6 @@ BOOL CBinPack::Unpacket(LPCTSTR lpszFileName,
 	return TRUE;
 }
 
-/** Release the memory newed by Unpacket function
-  *
-  * @param paFile: point to FILE_T buffer
-  */
-void CBinPack::ReleaseMem(FILE_T * paFile)
-{
-	if(paFile != NULL)
-	{
-		delete [] paFile;
-	}
-}
-
 /** Delete the directory,all its sub directories and files
   *
   * @param paFile: the directory name
@@ -421,40 +409,6 @@ BOOL CBinPack::DeleteDirectory(LPCTSTR lpszDirName)// DeleteDirectory(_T("c:\\aa
     else
         return FALSE;
 
-}
-/** Get released directory
-  *
-  * @return: the path of released path
-  */
-std::string CBinPack::GetReleaseDir()
-{
-	return m_strReleaseDir;
-}
-/**  Remove released directory
-  *
-  * @param lpszDir: directory path
-  * @return: true,if remove successful; false,otherwise
-  */
-BOOL CBinPack::RemoveReleaseDir(LPCTSTR lpszDir)
-{
-	if(lpszDir == NULL)
-		return TRUE;
-
-	return DeleteDirectory(lpszDir);
-}
-
-/** Remove released directory
-  *
-  * @return: true,if remove successful; false,otherwise
-  */
-BOOL CBinPack::RemoveReleaseDir()
-{
-	return DeleteDirectory(m_strReleaseDir.c_str());
-}
-
-std::string CBinPack::GetConfigFilePath()
-{
-	return m_strCfgPath;
 }
 
 void CBinPack::WinwcharToChar(WORD *pBuf, int nSize)
